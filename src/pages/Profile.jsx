@@ -453,12 +453,12 @@ function Section({
   const showEditControls = onEdit !== undefined;
   return (
     <section className="card">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+        <h2 className="flex items-center gap-2 text-base font-bold text-slate-900 sm:text-lg dark:text-white">
           {Icon && <Icon size={18} className="text-brand-600" />}
           {title}
         </h2>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {extraAction}
           {showEditControls && (
             editing ? (

@@ -135,23 +135,39 @@ export default function JobDetails() {
       </button>
 
       <header className="card overflow-hidden">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-          <CompanyLogo name={job.company} src={job.logo} size={72} />
+        <div className="flex flex-col gap-4 sm:gap-5 sm:flex-row sm:items-start">
+          <CompanyLogo
+            name={job.company}
+            src={job.logo}
+            size={72}
+            className="shrink-0"
+          />
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <h1 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:flex-wrap">
+              <div className="min-w-0">
+                <h1 className="break-words text-xl font-bold text-slate-900 dark:text-white xs:text-2xl sm:text-3xl">
                   {job.title}
                 </h1>
                 <p className="mt-1 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                  <Building2 size={14} /> {job.company} · {job.location}
+                  <Building2 size={14} className="shrink-0" />
+                  <span className="truncate">
+                    {job.company} · {job.location}
+                  </span>
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <Button variant="secondary" onClick={handleShare}>
-                  <Share2 size={16} /> Share
+              <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
+                <Button
+                  variant="secondary"
+                  onClick={handleShare}
+                  className="flex-1 sm:flex-none"
+                >
+                  <Share2 size={16} /> <span className="xs:inline">Share</span>
                 </Button>
-                <Button variant="secondary" onClick={handleSaveToggle}>
+                <Button
+                  variant="secondary"
+                  onClick={handleSaveToggle}
+                  className="flex-1 sm:flex-none"
+                >
                   {isSaved ? (
                     <>
                       <BookmarkCheck size={16} className="text-brand-600" /> Saved
@@ -162,12 +178,18 @@ export default function JobDetails() {
                     </>
                   )}
                 </Button>
-                <Button onClick={handleApply} disabled={isApplied} title={`Apply on ${careerHost}`}>
+                <Button
+                  onClick={handleApply}
+                  disabled={isApplied}
+                  title={`Apply on ${careerHost}`}
+                  className="w-full sm:w-auto"
+                >
                   {isApplied ? (
                     'Applied'
                   ) : (
                     <>
-                      Apply on {job.company} <ExternalLink size={14} />
+                      <span className="truncate">Apply on {job.company}</span>
+                      <ExternalLink size={14} className="shrink-0" />
                     </>
                   )}
                 </Button>

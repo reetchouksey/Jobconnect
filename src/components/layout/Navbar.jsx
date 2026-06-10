@@ -20,6 +20,7 @@ import { setSearch, addSearchHistory } from '../../redux/filterSlice.js';
 import { getInitials } from '../../utils/helpers.js';
 import { getJobSuggestions } from '../../utils/search.js';
 import SearchSuggestions from '../jobs/SearchSuggestions.jsx';
+import Logo from './Logo.jsx';
 
 export default function Navbar({ onOpenSidebar }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -73,7 +74,7 @@ export default function Navbar({ onOpenSidebar }) {
 
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
-      <div className="flex h-16 items-center gap-3 px-4 sm:px-6">
+      <div className="flex h-14 items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
         <button
           onClick={onOpenSidebar}
           className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden dark:text-slate-300 dark:hover:bg-slate-800"
@@ -82,7 +83,14 @@ export default function Navbar({ onOpenSidebar }) {
           <Menu size={22} />
         </button>
 
-        <form onSubmit={handleSearch} className="flex-1 max-w-xl">
+        <div className="lg:hidden">
+          <Logo />
+        </div>
+
+        <form
+          onSubmit={handleSearch}
+          className="hidden flex-1 sm:block sm:max-w-xl"
+        >
           <div className="relative">
             <Search
               size={18}
@@ -109,10 +117,18 @@ export default function Navbar({ onOpenSidebar }) {
           </div>
         </form>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <button
+            onClick={() => navigate('/jobs')}
+            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 sm:hidden dark:text-slate-300 dark:hover:bg-slate-800"
+            aria-label="Search jobs"
+          >
+            <Search size={20} />
+          </button>
+
           <button
             onClick={toggle}
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="hidden rounded-lg p-2 text-slate-600 hover:bg-slate-100 xs:inline-flex dark:text-slate-300 dark:hover:bg-slate-800"
             aria-label="Toggle theme"
             title="Toggle theme"
           >
@@ -120,7 +136,7 @@ export default function Navbar({ onOpenSidebar }) {
           </button>
 
           <button
-            className="relative rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="relative hidden rounded-lg p-2 text-slate-600 hover:bg-slate-100 sm:inline-flex dark:text-slate-300 dark:hover:bg-slate-800"
             aria-label="Notifications"
           >
             <Bell size={20} />
@@ -131,12 +147,12 @@ export default function Navbar({ onOpenSidebar }) {
             <div ref={ref} className="relative">
               <button
                 onClick={() => setMenuOpen((o) => !o)}
-                className="flex items-center gap-2 rounded-xl border border-transparent bg-slate-50 px-2.5 py-1.5 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700"
+                className="flex items-center gap-2 rounded-xl border border-transparent bg-slate-50 px-1.5 py-1 hover:bg-slate-100 sm:px-2.5 sm:py-1.5 dark:bg-slate-800 dark:hover:bg-slate-700"
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-xs font-bold text-white">
                   {getInitials(user?.name || 'U')}
                 </span>
-                <span className="hidden text-left sm:block">
+                <span className="hidden text-left md:block">
                   <span className="block text-xs text-slate-500 dark:text-slate-400">
                     Hello,
                   </span>
@@ -144,7 +160,7 @@ export default function Navbar({ onOpenSidebar }) {
                     {user?.name?.split(' ')[0] || 'User'}
                   </span>
                 </span>
-                <ChevronDown size={16} className="text-slate-500" />
+                <ChevronDown size={16} className="hidden text-slate-500 sm:inline-block" />
               </button>
 
               {menuOpen && (
@@ -181,11 +197,17 @@ export default function Navbar({ onOpenSidebar }) {
               )}
             </div>
           ) : (
-            <div className="flex items-center gap-2">
-              <Link to="/login" className="btn-ghost px-3 py-1.5 text-sm">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <Link
+                to="/login"
+                className="btn-ghost hidden px-3 py-1.5 text-sm xs:inline-flex"
+              >
                 Login
               </Link>
-              <Link to="/signup" className="btn-primary px-3 py-1.5 text-sm">
+              <Link
+                to="/signup"
+                className="btn-primary px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
+              >
                 Sign Up
               </Link>
             </div>

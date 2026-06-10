@@ -106,23 +106,23 @@ export default function Home() {
 
   return (
     <div className="space-y-10">
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-300 via-brand-500 to-brand-700 p-8 text-white shadow-glow sm:p-12">
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-300 via-brand-500 to-brand-700 p-5 text-white shadow-glow xs:rounded-3xl xs:p-6 sm:p-8 md:p-12">
         <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/30 blur-3xl" />
         <div className="absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-brand-200/50 blur-3xl" />
         <div className="relative">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold backdrop-blur">
             <Sparkles size={12} /> {jobs.length}+ open positions
           </span>
-          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-2xl font-extrabold leading-tight xs:text-3xl sm:mt-4 sm:text-4xl md:text-5xl">
             {user ? `Hello ${user.name?.split(' ')[0]}, find your next opportunity.` : 'Find the job built for you.'}
           </h1>
-          <p className="mt-3 max-w-xl text-base text-brand-100 sm:text-lg">
+          <p className="mt-2 max-w-xl text-sm text-brand-100 sm:mt-3 sm:text-base md:text-lg">
             Browse, save, and apply to thousands of jobs from leading companies.
           </p>
 
           <form
             onSubmit={handleSearch}
-            className="mt-8 flex flex-col gap-3 rounded-2xl bg-white/10 p-3 backdrop-blur sm:flex-row sm:items-center"
+            className="mt-5 flex flex-col gap-2.5 rounded-2xl bg-white/10 p-2.5 backdrop-blur sm:mt-8 sm:gap-3 sm:p-3 md:flex-row md:items-center"
           >
             <div className="relative flex-1">
               <Search
@@ -178,13 +178,13 @@ export default function Home() {
             </div>
             <button
               type="submit"
-              className="rounded-xl bg-white px-6 py-3 text-sm font-bold text-brand-700 shadow-soft transition hover:bg-brand-50"
+              className="rounded-xl bg-white px-5 py-3 text-sm font-bold text-brand-700 shadow-soft transition hover:bg-brand-50 sm:px-6"
             >
               Search Jobs
             </button>
           </form>
 
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-brand-100">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-brand-100 sm:mt-5">
             <span className="font-semibold uppercase tracking-wider">Popular:</span>
             {['Frontend', 'React', 'Designer', 'Remote', 'Data Scientist'].map(
               (term) => (
