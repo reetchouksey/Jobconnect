@@ -1,0 +1,19 @@
+node_modules
+dist
+dist-ssr
+.env
+.env.local
+.env.production
+.env.*.local
+.DS_Store
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.local
+
+# Backend SQLite database (per-environment, never commit)
+server/data/
+*.db
+*.db-wal
+*.db-shm
