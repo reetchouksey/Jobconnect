@@ -23,12 +23,12 @@ export default function Layout() {
   }, [sidebarOpen]);
 
   return (
-    <div className="flex min-h-screen dark:bg-slate-950">
+    <div className="flex min-h-screen w-full overflow-x-hidden dark:bg-slate-950">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex min-w-0 flex-1 flex-col">
         <Navbar onOpenSidebar={() => setSidebarOpen(true)} />
-        <main className="flex-1 px-3 py-4 xs:px-4 xs:py-5 sm:px-6 sm:py-6 lg:px-8">
-          <div className="mx-auto w-full max-w-7xl animate-fade-in">
+        <main className="min-w-0 flex-1 overflow-x-hidden px-3 py-4 xs:px-4 xs:py-5 sm:px-6 sm:py-6 lg:px-8">
+          <div className="mx-auto w-full min-w-0 max-w-7xl animate-fade-in">
             <Outlet />
           </div>
         </main>

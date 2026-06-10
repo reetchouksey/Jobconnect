@@ -17,12 +17,12 @@ export default function StatCard({ icon: Icon, label, value, tone = 'brand', tre
           TONES[tone],
         )}
       />
-      <div className="flex items-start justify-between gap-4">
-        <div>
+      <div className="flex items-start justify-between gap-3 sm:gap-4">
+        <div className="min-w-0 flex-1">
           <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
             {label}
           </p>
-          <p className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+          <p className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">
             {value}
           </p>
           {trend && (
@@ -33,11 +33,11 @@ export default function StatCard({ icon: Icon, label, value, tone = 'brand', tre
         </div>
         <div
           className={classNames(
-            'flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br shadow-md',
+            'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-md sm:h-12 sm:w-12',
             TONES[tone],
           )}
         >
-          <Icon size={22} />
+          <Icon size={20} />
         </div>
       </div>
     </div>

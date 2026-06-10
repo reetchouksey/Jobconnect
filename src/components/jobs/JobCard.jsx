@@ -72,12 +72,12 @@ export default function JobCard({ job }) {
   };
 
   return (
-    <article className="group card flex flex-col gap-4 transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-glow dark:hover:border-brand-700">
-      <header className="flex items-start gap-3">
-        <CompanyLogo name={job.company} src={job.logo} />
+    <article className="group card flex w-full min-w-0 flex-col gap-4 overflow-hidden transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-glow dark:hover:border-brand-700">
+      <header className="flex min-w-0 items-start gap-3">
+        <CompanyLogo name={job.company} src={job.logo} className="shrink-0" />
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <Link
                 to={`/jobs/${job.id}`}
                 className="block truncate font-semibold text-slate-900 hover:text-brand-600 dark:text-white dark:hover:text-brand-300"
@@ -85,7 +85,7 @@ export default function JobCard({ job }) {
               >
                 {job.title}
               </Link>
-              <p className="flex items-center gap-1.5 truncate text-sm text-slate-500 dark:text-slate-400">
+              <p className="flex min-w-0 items-center gap-1.5 truncate text-sm text-slate-500 dark:text-slate-400">
                 <span className="truncate">{job.company}</span>
                 {isReal && (
                   <span
@@ -99,7 +99,7 @@ export default function JobCard({ job }) {
             </div>
             <button
               onClick={toggleSave}
-              className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-brand-600 dark:hover:bg-slate-800"
+              className="shrink-0 rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-brand-600 dark:hover:bg-slate-800"
               aria-label={isSaved ? 'Unsave job' : 'Save job'}
               title={isSaved ? 'Unsave job' : 'Save job'}
             >
@@ -134,17 +134,17 @@ export default function JobCard({ job }) {
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-y-2 text-sm text-slate-600 dark:text-slate-300">
-        <span className="inline-flex items-center gap-1.5 truncate">
-          <MapPin size={14} className="text-slate-400" />
-          {job.location}
+      <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-slate-600 dark:text-slate-300">
+        <span className="inline-flex min-w-0 max-w-full items-center gap-1.5">
+          <MapPin size={14} className="shrink-0 text-slate-400" />
+          <span className="truncate">{job.location}</span>
         </span>
-        <span className="inline-flex items-center gap-1.5 truncate">
-          <Clock size={14} className="text-slate-400" />
-          {formatRelativeDate(job.postedAt)}
+        <span className="inline-flex min-w-0 max-w-full items-center gap-1.5">
+          <Clock size={14} className="shrink-0 text-slate-400" />
+          <span className="truncate">{formatRelativeDate(job.postedAt)}</span>
         </span>
-        <span className="col-span-2 inline-flex items-center gap-1.5 truncate text-slate-500 dark:text-slate-400">
-          {job.experience}
+        <span className="inline-flex min-w-0 max-w-full basis-full items-center gap-1.5 text-slate-500 dark:text-slate-400">
+          <span className="truncate">{job.experience}</span>
         </span>
       </div>
 
@@ -166,23 +166,23 @@ export default function JobCard({ job }) {
         </div>
       )}
 
-      <div className="mt-auto flex gap-2 pt-2">
-        <Link to={`/jobs/${job.id}`} className="flex-1">
-          <Button variant="secondary" className="w-full">
+      <div className="mt-auto flex min-w-0 gap-2 pt-2">
+        <Link to={`/jobs/${job.id}`} className="min-w-0 flex-1">
+          <Button variant="secondary" className="w-full px-3 sm:px-4">
             View Details
           </Button>
         </Link>
         <Button
           onClick={handleApply}
           disabled={isApplied}
-          className="flex-1"
+          className="min-w-0 flex-1 px-3 sm:px-4"
           title={`Apply on ${job.company}'s careers page`}
         >
           {isApplied ? (
             'Applied'
           ) : (
             <>
-              Apply <ExternalLink size={14} />
+              Apply <ExternalLink size={14} className="shrink-0" />
             </>
           )}
         </Button>

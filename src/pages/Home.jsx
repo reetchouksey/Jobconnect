@@ -312,14 +312,14 @@ export default function Home() {
 
 function SectionHeader({ icon: Icon, title, subtitle, actionLabel, onAction }) {
   return (
-    <div className="mb-5 flex items-end justify-between gap-4">
-      <div>
-        <h2 className="flex items-center gap-2 text-2xl font-bold text-slate-900 dark:text-white">
-          {Icon && <Icon size={22} className="text-brand-600" />}
-          {title}
+    <div className="mb-4 flex items-end justify-between gap-3 sm:mb-5 sm:gap-4">
+      <div className="min-w-0 flex-1">
+        <h2 className="flex items-center gap-2 text-lg font-bold text-slate-900 sm:text-2xl dark:text-white">
+          {Icon && <Icon size={20} className="shrink-0 text-brand-600" />}
+          <span className="truncate">{title}</span>
         </h2>
         {subtitle && (
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-xs text-slate-500 sm:text-sm dark:text-slate-400">
             {subtitle}
           </p>
         )}
@@ -327,7 +327,7 @@ function SectionHeader({ icon: Icon, title, subtitle, actionLabel, onAction }) {
       {actionLabel && (
         <button
           onClick={onAction}
-          className="hidden items-center gap-1 text-sm font-semibold text-brand-600 hover:underline sm:inline-flex"
+          className="hidden shrink-0 items-center gap-1 text-sm font-semibold text-brand-600 hover:underline sm:inline-flex"
         >
           {actionLabel} <ArrowRight size={14} />
         </button>
