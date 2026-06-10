@@ -19,7 +19,7 @@ const NAV = [
   { to: '/jobs', label: 'Browse Jobs', icon: Briefcase },
   { to: '/saved', label: 'Saved Jobs', icon: Bookmark, badgeKey: 'saved' },
   { to: '/applied', label: 'Applications', icon: ClipboardList, badgeKey: 'applied' },
-  { to: '/profile', label: 'My Profile', icon: User, auth: true },
+  { to: '/profile', label: 'My Profile', icon: User },
   { to: '/recruiter', label: 'Recruiter', icon: Building2, auth: true },
 ];
 
