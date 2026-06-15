@@ -15,9 +15,29 @@ const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
 
 const app = express();
 
+const allowedExact = new Set(
+  CLIENT_ORIGIN.split(',')
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
+
+const VERCEL_HOST_RE = /^https:\/\/[a-z0-9-]+\.vercel\.app$/i;
+const LOCALHOST_RE = /^http:\/\/localhost(:\d+)?$/i;
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+  if (allowedExact.has(origin)) return true;
+  if (VERCEL_HOST_RE.test(origin)) return true;
+  if (LOCALHOST_RE.test(origin)) return true;
+  return false;
+};
+
 app.use(
   cors({
-    origin: CLIENT_ORIGIN.split(',').map((s) => s.trim()),
+    origin: (origin, cb) => {
+      if (isAllowedOrigin(origin)) return cb(null, true);
+      return cb(new Error(`CORS: origin ${origin} is not allowed`));
+    },
     credentials: true,
   }),
 );
