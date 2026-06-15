@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: jobconnect-api
+    runtime: docker
+    plan: free
+    region: singapore
+    rootDir: server
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: DATABASE_FILE
+        value: /tmp/jobconnect.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_ORIGIN
+        value: https://jobconnect-silk.vercel.app,http://localhost:5173,http://localhost:5174,http://localhost:5175
